@@ -9,7 +9,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Praneetha2106/SE.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+                userRemoteConfigs: [[url: 'https://github.com/Praneetha2106/SE.git']]
+                ])'
             }
         }
 
