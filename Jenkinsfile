@@ -9,25 +9,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-                userRemoteConfigs: [[url: 'https://github.com/Praneetha2106/SE.git']]
-                ])'
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/Praneetha2106/SE.git']]
+                ])
             }
         }
 
         stage('Build') {
             steps {
-                echo"building the project"
+                echo "building the project"
                 bat "mvn clean package"
             }
         }
 
         stage('Test') {
             steps {
-                echo"testing the project"
+                echo "testing the project"
                 bat "mvn test"
             }
         }
     }
 }
-
